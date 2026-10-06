@@ -120,7 +120,7 @@ export function CharacterContainer() {
   }
 
   return (
-    <div id="wrapperDiv">
+    <div id="characterContainer">
       <div id="flexContainer">
         <Modal show={showFileModal} onHide={handleCloseFileModal}>
           <Modal.Header closeButton>
@@ -142,7 +142,6 @@ export function CharacterContainer() {
         <FloatingLabel
           controlId="floatingInput"
           label="Player Name"
-          className="mb-3"
         >
           {/* This is what allows the form to be submitted */}
           <Form.Control
@@ -187,7 +186,6 @@ export function CharacterContainer() {
         <FloatingLabel
           controlId="floatingInput"
           label="Alignment"
-          className="mb-3"
         >
           <Form.Control
             className="controlForms"
@@ -218,8 +216,8 @@ export function CharacterContainer() {
           <button type="submit" className="CharBtn" onClick={createJSON}>
             Save
           </button>
+          <button className="CharBtn" onClick={importJSON}>Import</button>
           <input type="file" id="PCFileInput" accept="application/json"></input>
-          <button className="CharBtn" onClick={importJSON}></button>
         </div>
       </div>
     </div>

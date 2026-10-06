@@ -38,13 +38,13 @@ export function SpellSlots() {
   }
   return (
     <div id="wrapperDiv">
-      <div id="flexContainer">
-        <h3>Spell Slots:</h3>
+      <div id="flexContainer" style={{ display: "flex", width: "20rem", height:"30rem", justifyContent: "space-between", paddingTop: "1rem", paddingBottom: "1rem", paddingLeft: "1rem", paddingRight: "1rem"}}>
+        <h3 style={{ color: "#d39b5e" }}>Spell Slots:</h3>
         <button id="spellSlotInfoButton" onClick={handleSSModal}>
           <InfoCircleFill className="infoIcons" />
         </button>
         <Form className="SpellSlotForm">
-          <label class="FirstLevelSpellSlotLabel">1st level</label>
+          <label style={{color:"#faf8ea"}} class="FirstLevelSpellSlotLabel">1st level</label>
           {FirstLevelCheckboxes.map((checkbox) => (
             <div key={`inline-checkbox`} className="cb-3">
               <Form.Check
@@ -60,7 +60,7 @@ export function SpellSlots() {
         </Form>
 
         <Form className="SpellSlotForm">
-          <label class="SecondLevelSpellSlotLabel">2nd level</label>
+          <label style={{color:"#faf8ea"}} class="SecondLevelSpellSlotLabel">2nd level</label>
           {SecondtoFifthLevelCheckboxes.map((checkbox) => (
             <div key={`inline-checkbox`} className="cb-3">
               <Form.Check
@@ -76,7 +76,7 @@ export function SpellSlots() {
         </Form>
 
         <Form className="SpellSlotForm">
-          <label class="SpellSlotLabel">3rd level</label>
+          <label style={{color:"#faf8ea"}} class="SpellSlotLabel">3rd level</label>
           {SecondtoFifthLevelCheckboxes.map((checkbox) => (
             <div key={`inline-checkbox`} className="cb-3">
               <Form.Check
@@ -92,7 +92,7 @@ export function SpellSlots() {
         </Form>
 
         <Form className="SpellSlotForm">
-          <label class="SpellSlotLabel">4th level</label>
+          <label style={{color:"#faf8ea"}} class="SpellSlotLabel">4th level</label>
           {SecondtoFifthLevelCheckboxes.map((checkbox) => (
             <div key={`inline-checkbox`} className="cb-3">
               <Form.Check
@@ -108,7 +108,7 @@ export function SpellSlots() {
         </Form>
 
         <Form className="SpellSlotForm">
-          <label class="SpellSlotLabel">5th level</label>
+          <label style={{color:"#faf8ea"}} class="SpellSlotLabel">5th level</label>
           {SecondtoFifthLevelCheckboxes.map((checkbox) => (
             <div key={`inline-checkbox`} className="cb-3">
               <Form.Check
@@ -124,7 +124,7 @@ export function SpellSlots() {
         </Form>
 
         <Form className="SpellSlotForm">
-          <label class="SpellSlotLabel">6th level</label>
+          <label style={{color:"#faf8ea"}} class="SpellSlotLabel">6th level</label>
           {SixthAndSeventhLevelCheckboxes.map((checkbox) => (
             <div key={`inline-checkbox`} className="cb-3">
               <Form.Check
@@ -140,7 +140,7 @@ export function SpellSlots() {
         </Form>
 
         <Form className="SpellSlotForm">
-          <label class="SpellSlotLabel">7th level</label>
+          <label style={{color:"#faf8ea"}} class="SpellSlotLabel">7th level</label>
           {SixthAndSeventhLevelCheckboxes.map((checkbox) => (
             <div key={`inline-checkbox`} className="cb-3">
               <Form.Check
@@ -156,7 +156,7 @@ export function SpellSlots() {
         </Form>
 
         <Form className="SpellSlotForm">
-          <label class="SpellSlotLabel">8th level</label>
+          <label style={{color:"#faf8ea"}} class="SpellSlotLabel">8th level</label>
           {EigthAndNinthLevelCheckboxes.map((checkbox) => (
             <div key={`inline-checkbox`} className="cb-3">
               <Form.Check
@@ -172,7 +172,7 @@ export function SpellSlots() {
         </Form>
 
         <Form className="SpellSlotForm">
-          <label class="SpellSlotLabel">9th level </label>
+          <label style={{color:"#faf8ea"}} class="SpellSlotLabel">9th level </label>
           {EigthAndNinthLevelCheckboxes.map((checkbox) => (
             <div key={`inline-checkbox`} className="cb-3">
               <Form.Check
@@ -188,9 +188,9 @@ export function SpellSlots() {
         </Form>
       </div>
 
-      <Modal show={showSSModal} onHide={handleCloseSSModal}>
+      <Modal style={{ color: '#6e4f43' }} show={showSSModal} onHide={handleCloseSSModal}>
         <Modal.Header closeButton>
-          <Modal.Title>What the heck are Spell Slots??</Modal.Title>
+          <Modal.Title style={{ color: '#6e4f43' }}>What the heck are Spell Slots??</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <p>
@@ -200,7 +200,7 @@ export function SpellSlots() {
           </p>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleCloseSSModal}>
+          <Button variant="secondary" onClick={handleCloseSSModal} style={{ backgroundColor: '#a85a43', color: '#fffdf0' }}>
             Close
           </Button>
         </Modal.Footer>

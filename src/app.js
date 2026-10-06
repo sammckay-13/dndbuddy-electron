@@ -17,6 +17,7 @@ import {
 import { SpellSlots } from "./components/SpellSlots";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { InfoCircleFill } from "react-bootstrap-icons";
+import AnimatedLines from "./AnimatedLines";
 
 export function addItemsFromImport() {
   DNDBuddy.setInventoryWeapons([]);
@@ -138,7 +139,7 @@ function DNDBuddy() {
     if (parentEvent.currentTarget.checked) {
       setInventoryequipped((prevequipped) => [
         ...prevequipped,
-        <div key={item.id}>
+        <div key={item.id} className="invItemDiv equippedItem">
           {item.name}
           <button className="infoButtons" onClick={() => handleInfoClick(item)}>
             <InfoCircleFill className="infoIcons" />
@@ -251,13 +252,19 @@ function DNDBuddy() {
   DNDBuddy.setInventoryequipped = setInventoryequipped;
   return (
     <div id="wrapperDiv">
-      <h1>Welcome to the DNDBuddy!</h1>
+      <div id="welcomeDiv">
+
+      <h1 style={{ color: '#FFFDF0', }} id="welcomeHeader">
+        Welcome to the DNDBuddy!
+      </h1>
+      <div id="characterAndStatContainer">
+
       <CharacterContainer />
-      <br></br>
       {/* I want stat block to be to the right of the CharacterContainer but we'll see */}
       <StatBlock />
-      <label>Inventory</label>
-      <label>Store</label>
+      </div>
+      </div>
+      <AnimatedLines/>
       <div id="CustomTabsDiv">
         {/* Inventory */}
         <CustomTabs
@@ -266,7 +273,8 @@ function DNDBuddy() {
           armor={inventoryArmor}
           spells={inventorySpell}
           equipped={inventoryequipped}
-        />
+          tabType="inventory"
+          />
         <SpellSlots />
 
         {/* Store */}
@@ -275,6 +283,7 @@ function DNDBuddy() {
           weapons={WeaponStoreList}
           armor={ArmorStoreList}
           spells={SpellStoreList}
+          tabType="store"
         />
       </div>
 
@@ -300,7 +309,7 @@ function DNDBuddy() {
         </Modal.Header>
         <Modal.Body>
           <p>Name: {elementName}</p>
-          {/* Below are the conditions for rendering the infromation text */}
+          {/* Below are the conditions for rendering the information text */}
           {elementDescription && (
             <>
               <p>Description: {elementDescription}</p>

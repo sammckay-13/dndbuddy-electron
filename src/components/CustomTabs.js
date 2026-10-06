@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 
-function CustomTabs({ weapons, armor, spells, equipped }) {
+function CustomTabs({ weapons, armor, spells, equipped, tabType }) {
   const [key, setKey] = useState("home");
 
   return (
-    <div id="tabs-container">
+    <div id="tabs-container" style={{ marginLeft: "5rem", marginRight: "5rem" }}>
+      <label style={{ color: '#5c2e22', fontSize: '25px', fontWeight: 'semibold', textDecoration: 'underline' }}>
+        {tabType === "inventory" ? "Inventory" : "Store"}
+      </label>
       <Tabs
         id="controlled-tab-example"
         activeKey={key}

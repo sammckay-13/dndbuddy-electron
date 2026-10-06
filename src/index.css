@@ -2,13 +2,52 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif;
   margin: auto;
-  max-width: 85rem;
-  padding: 1rem;
-  background-color: #f7f9fb;
+  max-width: 100rem;
+  background-color: #FFFDF0;
+}
+
+#welcomeHeader {
+  display: flex;
+  font-size: 40px;
+  justify-content: center;
+  align-items: center;
+}
+
+#welcomeDiv {
+  margin-bottom: 20px;
+  width: 100%;
+  background-color: #46372F;
+  border-radius: 0px;
 }
 
 #wrapperDiv {
-  width: 700px;
+  width: 100%;
+  margin: auto;
+}
+
+/* Character details + stat block: one line, equal widths, centered.
+   The rule on > * applies to whatever CharacterContainer and StatBlock render
+   as their outer element, and lets them shrink instead of wrapping. */
+#characterAndStatContainer {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 30px;
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 30px 24px;
+}
+
+#characterAndStatContainer > * {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+#characterContainer {
+  border-radius: 50px;
+  background-color: #6E4F43;
 }
 
 h1 {
@@ -21,48 +60,70 @@ h1 {
 }
 
 #controlled-tab-example {
-  background-color: #5085a5;
+  background-color: #6E4F43;
   border-radius: 7px;
 }
 
 .nav-link {
-  color: #f7f9fb;
+  color: #FFFDF0;
   &:hover {
-    color: #31708e;
-    border-color: #8fc1e3;
+    color: #FFFDF0;
+    background-color: #6E4F43;
   }
 }
 
 #home-tab {
-  color: #8fc1e3;
-  background-color: #5085a5;
+  color: #D39B5E;
+  background-color: #D39B5E;
 }
 
 li {
-  background-color: #31708e;
+  background-color: #6E4F43;
   border-radius: 10px 10px 0px 0px;
   &:hover {
     background-color: #8fc1e3;
     border: 0px;
   }
 }
+
 /* You use . for className and # for id */
 .tabContent {
   color: black;
-  background-color: #8fc1e3;
+  background-color: #D1C5A0;
   border-radius: 5px;
-  display: inline;
 }
 
-#flexContainer,
-#statFlexContainer {
+/* Scrollable boxes for the Store/Inventory tabs and Spell Slots */
+.tabContent,
+.spellSlotsDiv {
+  display: inline-block;
+  white-space: pre-wrap;
+  min-width: 417px;
+  max-width: 417px;
+  max-height: 600px;
+  min-height: 600px;
+  overflow: scroll;
+}
+
+#flexContainer {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  background-color: #5085a5;
-  border: 5px solid #5085a5;
-  border-radius: 10px;
-  min-width: 445px;
+  background-color: #46372F;
+  border: 5px solid #46372F;
+  border-radius: 20px;
+}
+
+#statFlexContainer {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  background-color: #46372f;
+  padding: 10px;
+  border: 5px solid #46372F;
+  border-radius: 20px;
 }
 
 .controlForms {
@@ -79,18 +140,17 @@ li {
 
 /* I can change this later */
 .CharBtn {
-  color: black;
+  background-color: #D39B5E;
+  color: #46372F;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid #f7f9fb;
   border-radius: 5px;
   line-height: 1px;
   width: 60px;
   height: 38px;
   font-size: 15px;
   margin-bottom: 10px;
-  background-color: #f7f9fb;
   border: none;
   outline: none;
   cursor: pointer;
@@ -111,98 +171,87 @@ label {
   gap: 20px;
 }
 
-.tabContent {
-  display: inline-block;
-  text-wrap: wrap;
-  white-space: pre-wrap;
-  min-width: 417px;
-  max-width: 417px;
-  max-height: 600px;
-  min-height: 600px;
-  overflow: scroll;
-}
-
+/* STORE rows: name (plain text), info icon, Buy button.
+   margin-left: auto on the info icon pushes it and Buy to the right,
+   so the icons line up in one column whatever the name length.
+   20px of padding each side keeps Buy off the edge of the tab. */
 .Item {
   display: flex;
-  justify-content: space-between;
-  width: 400px;
   align-items: center;
+  gap: 12px;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0 20px;
   margin-bottom: 10px;
 }
 
+.Item .infoButtons {
+  margin-left: auto;
+}
+
+/* INVENTORY rows: name (plain text), info icon, equip checkbox, Sell button.
+   Same idea: the info icon takes the auto margin, the rest sit to its right. */
 .invItemDiv {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-sizing: border-box;
   width: 100%;
+  padding: 0 20px;
+  margin-bottom: 10px;
 }
 
-.infoIcons {
-  color: #31708e;
-  width: 2em;
-  justify-content: center;
-  align-items: center;
+.invItemDiv .InvInfoButtons {
+  margin-left: auto;
 }
 
-.equip-checkbox {
-  display: inline;
-  margin-left: 80px;
+/* Checkbox in Inventory and Equipped rows: no extra Bootstrap margin,
+   so it sits in line with the rest of the row */
+.invItemDiv .form-check,
+.Item .form-check {
+  margin: 0;
 }
 
+/* Base look shared by every terracotta button */
 .StoreButtons,
-.infoButtons,
-#spellSlotInfoButton,
 .InvSellButtons,
-.InvInfoButtons {
-  color: black;
+.infoButtons,
+.InvInfoButtons,
+#spellSlotInfoButton {
+  color: #fffdf0;
   display: inline;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid #f7f9fb;
-  border-radius: 5px;
+  flex: none;
   line-height: 1px;
-  width: 60px;
   height: 38px;
   font-size: 15px;
-  background-color: #f7f9fb;
+  margin-top: 2px;
+  background-color: #a85a43;
   border: none;
   outline: none;
   cursor: pointer;
   transition: 0.3s ease;
-  &:hover {
-    background-color: #dbdada;
-  }
 }
 
-.InvSellButtons,
-.InvInfoButtons {
-  margin-left: 80px;
+/* Buy and Sell: rectangles */
+.StoreButtons,
+.InvSellButtons {
+  width: 60px;
+  border-radius: 5px;
 }
 
+/* Store and Inventory info icons: small fixed circles */
 .infoButtons,
 .InvInfoButtons {
+  width: 38px;
+  padding: 0;
   border-radius: 100%;
-  width: 10%;
 }
 
 .sb-1 {
   width: 15%;
 }
 
-#statFlexContainer {
-  width: 80%;
-}
-
 /* Check box in SpellSlots */
-.spellSlotsDiv {
-  display: inline-block;
-  text-wrap: wrap;
-  white-space: pre-wrap;
-  min-width: 417px;
-  max-width: 417px;
-  max-height: 600px;
-  min-height: 600px;
-  overflow: scroll;
-}
-
 #spellSlotInfoButton {
   width: 40px;
   border-radius: 100%;
@@ -227,4 +276,15 @@ label {
 .SpellSlotForm {
   display: block;
   width: 100%;
+}
+
+#PCFileInput {
+  border-radius: 5px;
+  color: #FFFDF0;
+  margin-bottom: 10px;
+}
+
+.form-check-input:checked {
+  background-color: #a85a43;
+  border-color: #a85a43;
 }
